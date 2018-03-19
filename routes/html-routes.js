@@ -13,52 +13,52 @@ module.exports = function ( app ) {
   app.get( "/", function ( req, res ) {
     // If the user already has an account send them to the members page
     if ( req.user ) {
-      res.redirect( "/members" );
+      res.redirect( "/dashboard" );
     }
-    res.sendFile( path.join( __dirname, "../public/signup.html" ) );
+    res.sendFile( path.join( __dirname, "../views/index.html" ) );
   } );
 
   app.get( "/login", function ( req, res ) {
     // If the user already has an account send them to the members page
     if ( req.user ) {
-      res.redirect( "/members" );
+      res.redirect( "/dashboard" );
     }
-    res.sendFile( path.join( __dirname, "../public/login.html" ) );
+    res.sendFile( path.join( __dirname, "../views/login.html" ) );
   } );
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get( "/members", isAuthenticated, function ( req, res ) {
-    res.sendFile( path.join( __dirname, "../public/members.html" ) );
+  app.get( "/dashboard", isAuthenticated, function ( req, res ) {
+    res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
     console.log( "req.user.id is:", req.user.id );
 
 
   } ); //end get/members
 
-  app.get( "/members/recentcomments", function ( req, res ) {
-    console.log( "req.user.email is:", req.user.email );
-
-    db.Comment.findAll( {
-        where: { reviewee: req.user.id }
-
-      } ).then( function ( dbComments ) {
-
-        res.json( dbComments )
-        console.log( "dbComments is:", dbComments );
-
-      } )
-      .catch( function ( err ) {
-
-        res.json( err );
-      } );
-
-  } )
+  // app.get( "/members/recentcomments", function ( req, res ) {
+  //   console.log( "req.user.email is:", req.user.email );
+  //
+  //   db.Comment.findAll( {
+  //       where: { reviewee: req.user.id }
+  //
+  //     } ).then( function ( dbComments ) {
+  //
+  //       res.json( dbComments )
+  //       console.log( "dbComments is:", dbComments );
+  //
+  //     } )
+  //     .catch( function ( err ) {
+  //
+  //       res.json( err );
+  //     } );
+  //
+  // } )
 
   // dashboard routes
-  app.get( "/dashboard", isAuthenticated, function ( req, res ) {
-    res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
-    console.log( "dashboard file served" );
-  } );
+  // app.get( "/dashboard", isAuthenticated, function ( req, res ) {
+  //   res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
+  //   console.log( "dashboard file served" );
+  // } );
 
 
 };

@@ -27,7 +27,7 @@ app.use( express.static( "public" ) );
 app.set( 'view engine', 'jade' );
 // We need to use sessions to keep track of our user's login status
 app.use( session( {
-  secret: "keyboardcat",
+  secret: "keyboard cat",
   resave: true,
   saveUninitialized: true
 } ) );

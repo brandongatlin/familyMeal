@@ -9,9 +9,9 @@ var db = require( "../models" );
 //html routes=================================================
 
 //home page
-router.get( "/", function ( req, res ) {
-  res.sendFile( 'index.html', { root: 'views' } );
-} );
+// router.get( "/", function ( req, res ) {
+//   res.sendFile( 'index.html', { root: 'views' } );
+// } );
 
 //sign-up portal
 // router.get( "/sign-up", function ( req, res ) {
