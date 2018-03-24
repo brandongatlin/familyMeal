@@ -8,19 +8,37 @@
 
   <!-- TITLE -->
   <title>Login</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/nav.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-  <!-- NAV -->
+  <!--Nav-->
+  <nav id='nav'>
+    <div class="nav-wrapper valign-wrapper">
+      <a href="/" class="brand-logo center">Logo</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div>
+        <a href="/login" class="waves-effect waves-light btn-large pulse" id="login">Login</a>
+      </div>
+    </div>
+
+  </nav>
+  <!--end nav-->
 
   <!-- Log In Form -->
   <div class="container">
@@ -60,8 +78,13 @@
     </div>
   </footer>
 
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="assets/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/login.js"></script>
+
+
+</body>
 
 </body>
 

@@ -31,9 +31,11 @@ module.exports = function ( app ) {
   app.get( "/dashboard", isAuthenticated, function ( req, res ) {
     res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
     console.log( "req.user.id is:", req.user.id );
-
-
   } ); //end get/members
+
+  app.get( "/profile", isAuthenticated, function ( req, res ) {
+    res.sendFile( path.join( __dirname, "../views/profile.html" ) );
+  } )
 
   // app.get( "/members/recentcomments", function ( req, res ) {
   //   console.log( "req.user.email is:", req.user.email );
