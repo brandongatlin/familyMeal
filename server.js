@@ -6,7 +6,6 @@ const db = require( "./models" );
 const router = require( "./controllers/controller.js" )
 const sequelize = require( "sequelize" );
 const chalkAnimation = require( 'chalk-animation' );
-const jade = require( 'jade' );
 const passport = require( "./config/passport" );
 const session = require( "express-session" );
 
@@ -17,14 +16,14 @@ const PORT = process.env.PORT || 3000;
 
 // Creating express app and configuring middleware needed for authentication
 app.use( bodyParser.urlencoded( {
-  extended: false
+  extended: true
 } ) );
 app.use( bodyParser.text() );
 app.use( bodyParser.json( {
   type: "application/vnd.api+json"
 } ) );
 app.use( express.static( "public" ) );
-app.set( 'view engine', 'jade' );
+// app.set( 'view engine', 'jade' );
 // We need to use sessions to keep track of our user's login status
 app.use( session( {
   secret: "keyboard cat",
