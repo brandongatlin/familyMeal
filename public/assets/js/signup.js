@@ -6,29 +6,7 @@ $( document ).ready( function () {
 
 
   // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on( "submit", function ( event ) {
-    console.log( "signup submitted" );
-    event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
 
-    console.log( userData );
-
-    console.log( 'form submitted' );
-
-
-    if ( !userData.email || !userData.password ) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
-    signUpUser( userData.email, userData.password );
-    emailInput.val( "" );
-    passwordInput.val( "" );
-
-
-  } );
 
   $( "#sign-up-submit" ).on( "click", function ( event ) {
     console.log( "signup submitted" );
