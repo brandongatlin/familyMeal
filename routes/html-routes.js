@@ -26,12 +26,30 @@ module.exports = function ( app ) {
     res.sendFile( path.join( __dirname, "../views/login.html" ) );
   } );
 
+  app.get( "/dashboard", function ( req, res ) {
+    res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
+  } )
+
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get( "/dashboard", isAuthenticated, function ( req, res ) {
-    res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
+  app.get( "/dashboard/comments", isAuthenticated, function ( req, res ) {
     console.log( "req.user.id is:", req.user.id );
-  } ); //end get/members
+
+    db.Comment.findAll( {
+      where: {
+        UserId: req.user.id
+      }
+    } ).then( function ( userComments ) {
+      console.log( userComments );
+      res.json( userComments );
+
+
+    } ).catch( function ( err ) {
+
+      res.json( err );
+    } );
+
+  } ) //end get/dashboard
 
   app.get( "/profile", isAuthenticated, function ( req, res ) {
     res.sendFile( path.join( __dirname, "../views/profile.html" ) );
