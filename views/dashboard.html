@@ -17,6 +17,10 @@
   <!-- Custom styles for this page -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/nav.css" rel="stylesheet">
+  <link href="assets/css/dashboard.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,36 +40,67 @@
   </nav>
   <!--end nav-->
 
-
-  <!-- Menu Icon -->
-  <div class="menuIcon">
-    <span class="icon icon-bars"></span>
-    <span class="icon icon-bars overlay"></span>
-  </div>
-
-
-  <div class="overlay-menu">
-    <!-- <ul id="menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#about">About</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul> -->
-
-  </div>
-  <!--end nav-->
   <div class="container">
-    <div class="jumbotron">
-      <h3>Welcome</h3>
 
+    <div class="row">
+      <div class="col l8">
+        <a class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>New Donation</a>
+        <a class="waves-effect waves-light btn-large"><i class="material-icons left">add_shopping_cart</i>Find Donation</a>
 
+      </div>
+
+      <div class="col l4">
+      </div>
 
     </div>
+
+    <div class="row" id="dashboard-container">
+
+      <div class="col l8">
+        <div id="donation-board">
+
+        </div>
+      </div>
+
+      <div class="col l4">
+
+        <div class="row">
+          <div id="comments-box">
+            <p>comments here</p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+
   </div>
+
+  <!-- <div class="preloader-wrapper active">
+    <div class="spinner-layer spinner-red-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 
   <script type="text/javascript" src="assets/js/materialize.min.js "></script>
+
+  <script type="text/javascript" src="assets/js/dashboard.js "></script>
+
 </body>
 </body>
 

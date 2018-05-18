@@ -3,7 +3,7 @@ var Sequelize = require( "sequelize" );
 module.exports = function ( sequelize, DataTypes ) {
 
   var Donation = sequelize.define( 'Donation', {
-      food: {
+      food_type: {
         allowNull: false,
         type: DataTypes.STRING( 50 ),
         validate: {
@@ -19,13 +19,21 @@ module.exports = function ( sequelize, DataTypes ) {
         }
       },
 
-      posted_by: {
+      food_quantity: {
         allowNull: false,
-        type: DataTypes.STRING(),
+        type: DataTypes.INTEGER(),
         validate: {
-          len: [ 1, 50 ]
+          len: [ 1, 5 ]
         }
       },
+
+      // posted_by: {
+      //   allowNull: false,
+      //   type: DataTypes.STRING(),
+      //   validate: {
+      //     len: [ 1, 50 ]
+      //   }
+      // },
 
       claimed_by: {
         allowNull: false,
@@ -40,14 +48,6 @@ module.exports = function ( sequelize, DataTypes ) {
         type: DataTypes.STRING(),
         validate: {
           len: [ 1, 50 ]
-        }
-      },
-
-      quantity: {
-        allowNull: false,
-        type: DataTypes.INTEGER(),
-        validate: {
-          len: [ 1, 5 ]
         }
       },
 

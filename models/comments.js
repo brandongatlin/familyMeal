@@ -16,7 +16,12 @@ module.exports = function ( sequelize, DataTypes ) {
       reviewee: {
         allowNull: false,
         type: DataTypes.STRING(),
-      }
+      },
+
+      // reviewer: {
+      //   allowNull: false,
+      //   type: DataTypes.STRING(),
+      // }
 
     },
 
