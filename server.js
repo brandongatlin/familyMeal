@@ -3,7 +3,7 @@ const bodyParser = require( "body-parser" );
 const app = express();
 const path = require( "path" );
 const db = require( "./models" );
-const router = express.Router();
+const exphbs = require( "express-handlebars" );
 const sequelize = require( "sequelize" );
 const chalkAnimation = require( 'chalk-animation' );
 const passport = require( "./config/passport" );
@@ -41,6 +41,15 @@ require( "./routes/api-routes.js" )( app );
 
 // Routes
 // =============================================================
+// Set Handlebars as the default templating engine.
+app.engine( "handlebars", exphbs( {
+  defaultLayout: "main",
+  partialsDir: [
+        //  path to your partials
+        __dirname + '/views/layouts/partials',
+    ]
+} ) );
+app.set( "view engine", "handlebars" );
 // const routes = require( "./config/routes.js" )
 // app.use( "/", apiRoutes, htmlRoutes );
 // app.use( "/", router );
