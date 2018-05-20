@@ -1,5 +1,6 @@
 $( document ).ready( function () {
   console.log( "dashboard.js loaded" );
+  $( '.tabs' ).tabs();
 
   $.get( "/dashboard/comments", function ( res ) {
     console.log( "got /dashboard front end" );
