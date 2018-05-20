@@ -4,7 +4,7 @@ module.exports = function ( sequelize, DataTypes ) {
 
   var Comment = sequelize.define( 'Comment', {
       text: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(),
         validate: {
           min: [ 10 ],
@@ -14,7 +14,7 @@ module.exports = function ( sequelize, DataTypes ) {
       },
 
       reviewee: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(),
       },
 
@@ -26,7 +26,7 @@ module.exports = function ( sequelize, DataTypes ) {
     },
 
     {
-      timestamps: true
+      timestamps: false
     } );
 
   return Comment;

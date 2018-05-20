@@ -32,8 +32,27 @@ module.exports = function ( app ) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get( "/members", isAuthenticated, function ( req, res ) {
-    // res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
-    res.render( "dashboard" )
+
+    db.Comment.findAll( {
+      where: {
+        UserId: req.user.id
+      }
+    } ).then( function ( userComments ) {
+      console.log( "user comments are:", userComments );
+
+      let hbsObj = {
+        userComments: userComments
+      }
+
+      res.render( "dashboard", hbsObj );
+
+
+    } ).catch( function ( err ) {
+
+      res.json( err );
+    } );
+
+
 
   } );
 
