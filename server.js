@@ -64,5 +64,5 @@ db.sequelize.sync( {
 //sequelize associations
 db.User.hasMany( db.Comment );
 db.Comment.belongsTo( db.User, { as: 'reviewer' } );
-db.User.hasMany( db.Donation );
+// db.User.hasMany( db.Donation );
 db.Donation.belongsTo( db.User, { as: 'donated_by' } );
