@@ -30,11 +30,13 @@ $( document ).ready( function () {
       food_quantity: food_quantity
     }
 
+    console.log( "front end newDonation is:", newDonation );
+
+
     $.post( "/members/newdonation", newDonation, function ( req, res ) {
 
       console.log( "/newdonation hit on front end" );
 
-      console.log( "front end newDonation is:", newDonation );
     } )
   } )
 
