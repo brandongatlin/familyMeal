@@ -3,7 +3,7 @@ const bodyParser = require( "body-parser" );
 const app = express();
 const path = require( "path" );
 const db = require( "./models" );
-const router = require( "./controllers/controller.js" )
+// const router = require( "./controllers/controller.js" )
 const sequelize = require( "sequelize" );
 const chalkAnimation = require( 'chalk-animation' );
 const passport = require( "./config/passport" );
@@ -41,9 +41,9 @@ require( "./routes/api-routes.js" )( app );
 
 // Routes
 // =============================================================
-const routes = require( "./config/routes.js" )
-// app.use( "/", routes );
-app.use( "/", router, routes );
+// const routes = require( "./config/routes.js" )
+// app.use( "/", apiRoutes, htmlRoutes );
+// app.use( "/", router, routes );
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

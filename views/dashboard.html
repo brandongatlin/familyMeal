@@ -30,7 +30,7 @@
       <a href="/" class="brand-logo center">Logo</a>
       <ul class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-        <li><a href="/comment">Comment</a></li>
+        <li><a href="/comments">Comment</a></li>
       </ul>
       <div>
         <a href="/logout" class="waves-effect waves-light btn-large pulse logout" id="dashboard-logout">Logout</a>
@@ -44,7 +44,7 @@
 
     <div class="row">
       <div class="col l8">
-        <a class="waves-effect waves-light btn-large"><i class="material-icons left">add</i>New Donation</a>
+        <a class="waves-effect waves-light btn-large" id="show-donation-form"><i class="material-icons left">add</i>New Donation</a>
         <a class="waves-effect waves-light btn-large"><i class="material-icons left">add_shopping_cart</i>Find Donation</a>
 
       </div>
@@ -59,29 +59,52 @@
       <div class="col l8">
         <div id="donation-board">
 
-        </div>
-      </div>
-
-      <div class="col l4">
-
-        <div class="row">
-          <div id="comments-box">
-            <p>comments here</p>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Food Item" id="food-item-input" type="text" class="validate">
+                </div>
+              </div>
+              <div clas="row">
+                <div class="input-field col s12">
+                  <input placeholder="Food Description" id="food-description-input" type="text" class="validate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Food Item" id="food-quantity-input" type="text" class="validate">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <a class="btn-floating btn-large waves-effect waves-light red" id="submit-donation"><i class="material-icons">add</i></a>
+                </div>
+                <div>
+            </form>
+            </div>
+            </div>
           </div>
+
+          <div class="col l4">
+
+            <div class="row">
+              <div id="comments-box">
+              </div>
+            </div>
+
+
+
+          </div>
+
         </div>
+
 
 
 
       </div>
 
-    </div>
-
-
-
-
-  </div>
-
-  <!-- <div class="preloader-wrapper active">
+      <!-- <div class="preloader-wrapper active">
     <div class="spinner-layer spinner-red-only">
       <div class="circle-clipper left">
         <div class="circle"></div>
@@ -95,11 +118,11 @@
     </div>
   </div> -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 
-  <script type="text/javascript" src="assets/js/materialize.min.js "></script>
+      <script type="text/javascript" src="assets/js/materialize.min.js "></script>
 
-  <script type="text/javascript" src="assets/js/dashboard.js "></script>
+      <script type="text/javascript" src="assets/js/dashboard.js "></script>
 
 </body>
 </body>

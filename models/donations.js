@@ -36,7 +36,7 @@ module.exports = function ( sequelize, DataTypes ) {
       // },
 
       claimed_by: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(),
         validate: {
           len: [ 1, 50 ]
@@ -44,7 +44,7 @@ module.exports = function ( sequelize, DataTypes ) {
       },
 
       delivered_by: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING(),
         validate: {
           len: [ 1, 50 ]
