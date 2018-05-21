@@ -43,7 +43,14 @@
   <div class="container">
 
 
-    <div class="row" id="dashboard-container">
+    <div class="row">
+      <h3 id="name-div">Welcome back,
+        {{#each user}}
+          {{this.name}}
+        {{/each}}
+      </h3>
+
+    </div>
 
       <div class="col l12">
 
@@ -52,16 +59,33 @@
             <ul class="tabs">
               <li class="tab col s2"><a href="#new-donation-form"><i class="material-icons left">add_shopping_cart</i>New Donation</a></li>
               <li class="tab col s2"><a href="#test2"><i class="material-icons left">insert_comment</i>New Comment</a></li>
-              <li class="tab col s2"><a href="#test3"><i class="material-icons left">shopping_cart</i>View Donation Board</a></li>
-              <li class="tab col s2"><a href="#test4"><i class="material-icons left">map</i>View Donation Map</a></li>
-              <li class="tab col s2"><a href="#test5"><i class="material-icons left">markunread_mailbox</i>My Feedback</a></li>
+              <li id="view-donations" class="tab col s2"><a href="#donations-div"><i class="material-icons left">shopping_cart</i>View Donation Board</a></li>
+              <li class="tab col s2"><a href="test4"><i class="material-icons left">map</i>View Donation Map</a></li>
+              <li id="view-comments" class="tab col s2"><a href="#user-feedback"><i class="material-icons left">markunread_mailbox</i>My Feedback</a></li>
 
             </ul>
           </div>
-          <div id="test2" class="col s12">Test 2</div>
-          <div id="test3" class="col s12">Test 3</div>
-          <div id="test4" class="col s12">Test 4</div>
-          <div id="test5" class="col s12">Test 5</div>
+        </div>
+
+
+<div class="row">
+  <div class="col s12">
+    <div id="dashboard-container"></div>
+  </div>
+</div>
+
+          <div id="user-feedback">
+            <h4>feedback</h4>
+            <ul id="comments-list">
+            </ul>
+          </div>
+
+          <div id="donations-div">
+            <h4>donations</h4>
+            <ul id="donations-list">
+            </ul>
+          </div>
+
 
         </div>
 
@@ -92,24 +116,20 @@
         </div>
 
 
+
+
+
+
+
+
+
+
+
+
       </div>
       <!--end main column-->
 
 
-      <!-- <div class="col l4">
-        <div class="row">
-          <div id="comments-box">
-          </div>
-        </div>
-      </div> -->
-
-<div id="test">
-  {{#each userComments}}
-  <div class="row">
-      {{this.text}}
-  </div>
-   {{/each}}
-</div>
 
 
 

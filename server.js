@@ -41,7 +41,8 @@ require( "./routes/api-routes.js" )( app );
 
 // Routes
 // =============================================================
-// Set Handlebars as the default templating engine.
+// Set Handlebars as the
+// default templating engine.
 app.engine( "handlebars", exphbs( {
   defaultLayout: "main",
   partialsDir: [
@@ -72,6 +73,6 @@ db.sequelize.sync( {
 
 //sequelize associations
 db.User.hasMany( db.Comment );
-db.Comment.belongsTo( db.User, { as: 'reviewer' } );
+db.Comment.belongsTo( db.User );
 // db.User.hasMany( db.Donation );
 db.Donation.belongsTo( db.User, { as: 'donated_by' } );
