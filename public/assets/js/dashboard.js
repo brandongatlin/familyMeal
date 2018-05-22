@@ -56,20 +56,14 @@ $( document ).ready( function () {
           )
         }
 
-        // for ( var i = 0; i < data.length; i++ ) {
-        //   markers.push( data[ i ].donated_by.address );
-        // }
-        //
-        // console.log( "markers is now", markers );
-
-
-
       }
     } )
   } )
 
   $( "#view-donation-map" ).on( "click", function ( event ) {
     event.preventDefault();
+    // $( "#tab-div" ).empty();
+
 
     markers = [];
 
@@ -81,15 +75,11 @@ $( document ).ready( function () {
           markers.push( data[ i ].donated_by.address );
         }
 
-        console.log( "donation addresses are:", markers );
-        // initMap();
       }
     } ).then( function ( moredata ) {
       console.log( "moredata is:", moredata );
       initMap( moredata );
     } )
-
-
 
   } )
 
@@ -99,6 +89,7 @@ $( document ).ready( function () {
 
     $.get( "/members/viewcomments", function ( data ) {
       if ( data ) {
+        $( "#tab-div" ).empty();
         $( "#comments-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
@@ -139,29 +130,3 @@ $( document ).ready( function () {
 
 
 } ); //end ready fx
-
-// function initMap() {
-//   var geocoder = new google.maps.Geocoder();
-//
-//   // for ( var i = 0; i < markers.length; i++ ) {
-//   //   geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
-//   //     if ( status == google.maps.GeocoderStatus.OK ) {
-//   //       var marker = new google.maps.Marker( {
-//   //         map: map,
-//   //         position: results[ 0 ].geometry.location
-//   //       } );
-//   //     } else {
-//   //       alert( "Geocode was not successful for the following reason: " + status );
-//   //     }
-//   //   } );
-//   // }
-//
-//   var center = { lat: 29.760202, lng: -95.369835 };
-//   var houston = { lat: 29.760202, lng: -95.369835 };
-//
-//   var map = new google.maps.Map( document.getElementById( 'map' ), {
-//     zoom: 10,
-//     center: center
-//   } );
-//
-// } //end init map fx

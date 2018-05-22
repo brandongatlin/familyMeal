@@ -43,10 +43,10 @@ module.exports = function ( app ) {
       let nameObj = {
         user: user
       }
-      console.log( "user is:", user );
-      console.log( "member name is:", user[ 0 ].name );
-
-      console.log( "member type is:", user[ 0 ].member_type );
+      // console.log( "user is:", user );
+      // console.log( "member name is:", user[ 0 ].name );
+      //
+      // console.log( "member type is:", user[ 0 ].member_type );
 
       if ( user[ 0 ].member_type === "donor" ) {
         res.render( "dashboard", nameObj )
@@ -86,7 +86,7 @@ module.exports = function ( app ) {
               [ 'id', 'DESC' ]
           ]
     } ).then( function ( donationAddresses ) {
-      console.log( "all donationAddresses are :", donationAddresses );
+      // console.log( "all donationAddresses are :", donationAddresses );
       res.json( donationAddresses );
 
     } )
@@ -114,7 +114,7 @@ module.exports = function ( app ) {
       food_quantity: req.body.food_quantity,
       donatedById: req.user.id
     } ).then( function ( newDonation ) {
-      console.log( "backend newDonation is:", newDonation );
+      // console.log( "backend newDonation is:", newDonation );
     } )
   } )
 
