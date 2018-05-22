@@ -114,6 +114,8 @@ module.exports = function ( app ) {
       food_quantity: req.body.food_quantity,
       donatedById: req.user.id
     } ).then( function ( newDonation ) {
+      // M.toast( { html: `Thanks for the ${req.body.food_type}!` } )
+
       // console.log( "backend newDonation is:", newDonation );
     } )
   } )

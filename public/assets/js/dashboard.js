@@ -119,6 +119,10 @@ $( document ).ready( function () {
     $( "#food-description-input" ).val( '' );
     $( "#food-quantity-input" ).val( '' );
 
+    const donationToast = `Thanks for the ${newDonation.food_type}!`
+    M.toast( { html: donationToast, classes: "toasts" } )
+
+
     $.post( "/members/newdonation", newDonation, function ( req, res ) {
 
     } )
