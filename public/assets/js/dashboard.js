@@ -3,16 +3,35 @@ var markers;
 
 function initMap( moredata ) {
   console.log( "markers at start of initMap", markers );
+  console.log( "more data is:", moredata );
 
   var geocoder = new google.maps.Geocoder();
 
-  for ( var i = 0; i < markers.length; i++ ) {
+  for ( var i = 0; i < moredata.length; i++ ) {
+
+
+    // var contentString = markers[ i ]
     geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
+      console.log( "geocode results are:", results );
+
       if ( status == google.maps.GeocoderStatus.OK ) {
+
         var marker = new google.maps.Marker( {
           map: map,
-          position: results[ 0 ].geometry.location
+          position: results[ 0 ].geometry.location,
+          title: "test title"
         } );
+
+        var content = results[ 0 ].formatted_address
+
+        var infowindow = new google.maps.InfoWindow( {
+          content: content
+        } );
+
+        marker.addListener( 'click', function () {
+          infowindow.open( map, marker );
+        } );
+
       } else {
         alert( "Geocode was not successful for the following reason: " + status );
       }
@@ -35,9 +54,9 @@ $( document ).ready( function () {
   // var markers = [];
 
 
-
-  $( '.tabs' ).tabs();
-  // var instance = M.Tabs.getInstance( elem );
+  M.AutoInit();
+  // $( '.tabs' ).tabs();
+  // var instance = M.Tabs.init( '.tabs' );
   // instance.select( 'tab_id' );
   // instance.updateTabIndicator();
 
