@@ -36,7 +36,6 @@
         <a href="/logout" class="waves-effect waves-light btn-large pulse logout" id="dashboard-logout">Logout</a>
       </div>
     </div>
-
   </nav>
   <!--end nav-->
 
@@ -49,94 +48,85 @@
           {{this.name}}
         {{/each}}
       </h3>
-
     </div>
 
+    <div class="row">
       <div class="col l12">
-
         <div class="row">
           <div class="col s12">
             <ul class="tabs">
               <li class="tab col s2"><a href="#new-donation-form"><i class="material-icons left">add_shopping_cart</i>New Donation</a></li>
               <li class="tab col s2"><a href="#test2"><i class="material-icons left">insert_comment</i>New Comment</a></li>
               <li id="view-donations" class="tab col s2"><a href="#donations-div"><i class="material-icons left">shopping_cart</i>View Donation Board</a></li>
-              <li class="tab col s2"><a href="test4"><i class="material-icons left">map</i>View Donation Map</a></li>
+              <li id="view-donation-map" class="tab col s2"><a href="#map"><i class="material-icons left">map</i>View Donation Map</a></li>
               <li id="view-comments" class="tab col s2"><a href="#user-feedback"><i class="material-icons left">markunread_mailbox</i>My Feedback</a></li>
 
             </ul>
           </div>
         </div>
-
-
-<div class="row">
-  <div class="col s12">
-    <div id="dashboard-container"></div>
-  </div>
-</div>
-
-          <div id="user-feedback">
-            <h4>feedback</h4>
-            <ul id="comments-list">
-            </ul>
-          </div>
-
-          <div id="donations-div">
-            <h4>donations</h4>
-            <ul id="donations-list">
-            </ul>
-          </div>
-
-
-        </div>
-
-
-        <div class="row" id="new-donation-form">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Food Item" id="food-item-input" type="text" class="validate">
-              </div>
-            </div>
-            <div clas="row">
-              <div class="input-field col s12">
-                <input placeholder="Food Description" id="food-description-input" type="text" class="validate">
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input placeholder="Food Item" id="food-quantity-input" type="text" class="validate">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <a class="btn-floating btn-large waves-effect waves-light red" id="submit-donation"><i class="material-icons">add</i></a>
-              </div>
-            </div>
-          </form>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
-      <!--end main column-->
-
-
-
-
-
-
     </div>
 
-    <!-- <div class="preloader-wrapper active">
+
+
+
+
+    <div class="row">
+      <div class="col s12">
+        <div id="user-feedback">
+          <ul id="comments-list">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div id="donations-div">
+          <ul id="donations-list">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div id="map"></div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row" id="new-donation-form">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Food Item" id="food-item-input" type="text" class="validate">
+          </div>
+        </div>
+        <div clas="row">
+          <div class="input-field col s12">
+            <input placeholder="Food Description" id="food-description-input" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input placeholder="Food Item" id="food-quantity-input" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <a class="btn-floating btn-large waves-effect waves-light red" id="submit-donation"><i class="material-icons">add</i></a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+
+  <!-- <div class="preloader-wrapper active">
     <div class="spinner-layer spinner-red-only">
       <div class="circle-clipper left">
         <div class="circle"></div>
@@ -150,13 +140,24 @@
     </div>
   </div> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+  <!-- Maps API Key -->
 
-    <script type="text/javascript" src="assets/js/materialize.min.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 
-    <script type="text/javascript" src="assets/js/dashboard.js "></script>
+  <script type="text/javascript" src="assets/js/materialize.min.js "></script>
 
-</body>
+
+
+
+  <script type="text/javascript" src="assets/js/dashboard.js "></script>
+
+  <!-- <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=4fkFvoPmubOIuJfdMZxO~qWDwN_R9GDQvaixT9VAmpA~Ah7XiRYmPRyX55yMxVnqCnZyX_cnN3XDiIj8lPIOs5dCNFyJ7OFUrCdPsbXlYBaG' async defer></script> -->
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEkI7qU2GiLBFGdTKSINkkZnHToR6DXxU&v=3.31&callback=initMap"></script>
+
+
+
+
 </body>
 
 </html>

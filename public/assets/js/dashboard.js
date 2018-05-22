@@ -1,49 +1,109 @@
+var markers;
+
+
+function initMap( moredata ) {
+  console.log( "markers at start of initMap", markers );
+
+  var geocoder = new google.maps.Geocoder();
+
+  for ( var i = 0; i < markers.length; i++ ) {
+    geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
+      if ( status == google.maps.GeocoderStatus.OK ) {
+        var marker = new google.maps.Marker( {
+          map: map,
+          position: results[ 0 ].geometry.location
+        } );
+      } else {
+        alert( "Geocode was not successful for the following reason: " + status );
+      }
+    } );
+  }
+
+  var center = { lat: 29.760202, lng: -95.369835 };
+  var houston = { lat: 29.760202, lng: -95.369835 };
+
+  var map = new google.maps.Map( document.getElementById( 'map' ), {
+    zoom: 10,
+    center: center
+  } );
+
+} //end init map fx
+
+
 $( document ).ready( function () {
-  console.log( "dashboard.js loaded" );
+
+  // var markers = [];
+
+
+
   $( '.tabs' ).tabs();
-
-  // $.get( "/members", function ( data ) {
-  //   if ( data ) {
-  //     $( "#name-div" ).empty();
-  //     // $( "#name-div" ).append( data.name );
-  //
-  //   }
-  // } )
-
+  // var instance = M.Tabs.getInstance( elem );
+  // instance.select( 'tab_id' );
+  // instance.updateTabIndicator();
 
 
   $( "#view-donations" ).on( "click", function ( event ) {
     event.preventDefault()
-    console.log( "view donations clicked" );
 
     $.get( "/members/viewdonations", function ( data ) {
       if ( data ) {
-        console.log( data );
+        // console.log( "address of first donation is", data[ 0 ].donated_by.address );
         $( "#donations-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
           $( "#donations-list" ).prepend(
-            `<li>${data[i].food_description}</li>`
+            `<li>${data[i].food_type}, ${data[i].food_description}</li>`
           )
         }
+
+        // for ( var i = 0; i < data.length; i++ ) {
+        //   markers.push( data[ i ].donated_by.address );
+        // }
+        //
+        // console.log( "markers is now", markers );
+
+
+
       }
     } )
+  } )
+
+  $( "#view-donation-map" ).on( "click", function ( event ) {
+    event.preventDefault();
+
+    markers = [];
+
+
+    $.get( "/members/viewmap", function ( data ) {
+      if ( data ) {
+
+        for ( var i = 0; i < data.length; i++ ) {
+          markers.push( data[ i ].donated_by.address );
+        }
+
+        console.log( "donation addresses are:", markers );
+        // initMap();
+      }
+    } ).then( function ( moredata ) {
+      console.log( "moredata is:", moredata );
+      initMap( moredata );
+    } )
+
+
+
   } )
 
 
   $( "#view-comments" ).on( "click", function ( event ) {
     event.preventDefault()
 
-    console.log( "view comment clicked" );
-
     $.get( "/members/viewcomments", function ( data ) {
       if ( data ) {
-        console.log( data );
         $( "#comments-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
           $( "#comments-list" ).prepend(
-            `<li>${data[i].text}</li>`
+            `<li>On ${data[i].createdAt}, ${data[i].writerName} said, "${data[i].text}"</li>`
           )
         }
       }
@@ -74,4 +134,34 @@ $( document ).ready( function () {
   } )
 
 
+
+
+
+
 } ); //end ready fx
+
+// function initMap() {
+//   var geocoder = new google.maps.Geocoder();
+//
+//   // for ( var i = 0; i < markers.length; i++ ) {
+//   //   geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
+//   //     if ( status == google.maps.GeocoderStatus.OK ) {
+//   //       var marker = new google.maps.Marker( {
+//   //         map: map,
+//   //         position: results[ 0 ].geometry.location
+//   //       } );
+//   //     } else {
+//   //       alert( "Geocode was not successful for the following reason: " + status );
+//   //     }
+//   //   } );
+//   // }
+//
+//   var center = { lat: 29.760202, lng: -95.369835 };
+//   var houston = { lat: 29.760202, lng: -95.369835 };
+//
+//   var map = new google.maps.Map( document.getElementById( 'map' ), {
+//     zoom: 10,
+//     center: center
+//   } );
+//
+// } //end init map fx

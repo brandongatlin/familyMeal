@@ -62,12 +62,32 @@ module.exports = function ( app ) {
 
   app.get( "/members/viewdonations", isAuthenticated, function ( req, res ) {
     db.Donation.findAll( {
+      include: [ { all: true } ],
       where: {
         status_claimed: 0
-      }
+      },
+      order: [
+              [ 'id', 'DESC' ]
+          ]
     } ).then( function ( allDonations ) {
       // console.log( "all donations are :", allDonations );
       res.json( allDonations );
+
+    } )
+  } )
+
+  app.get( "/members/viewmap", isAuthenticated, function ( req, res ) {
+    db.Donation.findAll( {
+      include: [ { all: true } ],
+      where: {
+        status_claimed: 0
+      },
+      order: [
+              [ 'id', 'DESC' ]
+          ]
+    } ).then( function ( donationAddresses ) {
+      console.log( "all donationAddresses are :", donationAddresses );
+      res.json( donationAddresses );
 
     } )
   } )
