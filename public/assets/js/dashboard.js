@@ -1,52 +1,128 @@
 var markers;
-
+var content;
 
 function initMap( moredata ) {
-  console.log( "markers at start of initMap", markers );
-  console.log( "more data is:", moredata );
-
-  var geocoder = new google.maps.Geocoder();
-
-  for ( var i = 0; i < moredata.length; i++ ) {
-
-
-    // var contentString = markers[ i ]
-    geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
-      console.log( "geocode results are:", results );
-
-      if ( status == google.maps.GeocoderStatus.OK ) {
-
-        var marker = new google.maps.Marker( {
-          map: map,
-          position: results[ 0 ].geometry.location,
-          title: "test title"
-        } );
-
-        var content = results[ 0 ].formatted_address
-
-        var infowindow = new google.maps.InfoWindow( {
-          content: content
-        } );
-
-        marker.addListener( 'click', function () {
-          infowindow.open( map, marker );
-        } );
-
-      } else {
-        alert( "Geocode was not successful for the following reason: " + status );
-      }
-    } );
-  }
+  console.log( "more data is:", moredata )
+  "more data is:", moredata;
 
   var center = { lat: 29.760202, lng: -95.369835 };
-  var houston = { lat: 29.760202, lng: -95.369835 };
 
-  var map = new google.maps.Map( document.getElementById( 'map' ), {
+  var mapOptions = {
     zoom: 10,
-    center: center
-  } );
+    scrollwheel: false,
+    center: new google.maps.LatLng( 31.44, -100.47 )
+  }
+  var map = new google.maps.Map( document.getElementById( 'map' ), mapOptions );
+  var bounds = new google.maps.LatLngBounds();
+  var geocoder = new google.maps.Geocoder();
+  for ( var x = 0; x < moredata.length; x++ ) {
+    var name = `${moredata[ x ].food_type} ${moredata[ x ].donated_by.address}`;
+    var address =
+      geocoder.geocode( {
+        'address': `${moredata[ x ].donated_by.address}`
+      }, ( function ( name ) {
+        // get function closure on "name"
+        return function ( results, status ) {
+          if ( status == google.maps.GeocoderStatus.OK ) {
+            bounds.extend( results[ 0 ].geometry.location );
+            map.fitBounds( bounds );
+            var marker = new google.maps.Marker( {
+              map: map,
+              position: results[ 0 ].geometry.location,
+              animation: google.maps.Animation.DROP,
+            } );
+            var contentString = `${name} ${address}`;
+            var infowindow = new google.maps.InfoWindow( {
+              content: `${name}`
+            } );
+            google.maps.event.addListener( marker, 'click', function () {
+              infowindow.open( map, marker );
+            } );
+          }
+        }
+      } )( name ) );
+  }
+}
 
-} //end init map fx
+// google.maps.event.addDomListener( window, 'load', initMap );
+// google.maps.event.addDomListener( window, 'resize', initMap );
+var addresses = [ "3000 Main St San Angelo TX", "4001 Sunset Dr San Angelo TX" ];
+var names = [ 'First Place', 'Second Place' ];
+
+
+// function initMap( moredata ) {
+//   console.log( "more data is:", moredata );
+
+// var geocoder = new google.maps.Geocoder();
+
+
+
+// for ( var i = 0; i < moredata.length; i++ ) {
+//
+//   console.log( "more data sub i is:", moredata[ i ] );
+//
+//   var food = `${moredata[i].food_type}`
+//   console.log( "food is:", moredata[ i ].food_type );
+//
+//   content = `${moredata[ i ].donated_by.address}`
+//   // var content = `${place} ${food}`
+//
+//
+//
+//   geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
+//
+//     console.log( "results from google are:", results );
+//
+//     var marker = new google.maps.Marker( {
+//       map: map,
+//       position: results[ 0 ].geometry.location,
+//       title: "test title"
+//     } );
+//
+//     var infowindow = new google.maps.InfoWindow( {
+//       content: markers[ i ]
+//     } );
+//
+//     marker.addListener( 'click', function () {
+//       infowindow.open( map, marker );
+//     } );
+//
+//   } );
+// } //end for loop
+
+//   var center = { lat: 29.760202, lng: -95.369835 };
+//   var houston = { lat: 29.760202, lng: -95.369835 };
+//
+//   var map = new google.maps.Map( document.getElementById( 'map' ), {
+//     zoom: 10,
+//     center: center
+//   } );
+//
+// } //end init map fx
+
+//testing
+// geocoder.geocode( {
+//   'address': addresses[ x ]
+//   // get function closure on "name"
+// }, ( function ( name ) {
+//   return function ( results, status ) {
+//     if ( status == google.maps.GeocoderStatus.OK ) {
+//       var marker = new google.maps.Marker( {
+//         map: map,
+//         position: results[ 0 ].geometry.location,
+//         animation: google.maps.Animation.DROP,
+//       } );
+//       var contentString = name;
+//       var infowindow = new google.maps.InfoWindow( {
+//         content: contentString
+//       } );
+//       google.maps.event.addListener( marker, 'click', function () {
+//         infowindow.open( map, marker );
+//       } );
+//     }
+//   }
+// } )( name ) );
+//end testing
 
 
 $( document ).ready( function () {
@@ -96,7 +172,7 @@ $( document ).ready( function () {
 
       }
     } ).then( function ( moredata ) {
-      console.log( "moredata is:", moredata );
+      // console.log( "moredata is:", moredata );
       initMap( moredata );
     } )
 
