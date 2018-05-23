@@ -4,6 +4,10 @@ var db = require( "../models" );
 var express = require( 'express' );
 const router = express.Router();
 
+const Sequelize = require( "sequelize" )
+const Op = Sequelize.Op
+
+
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require( "../config/middleware/isAuthenticated" );
@@ -102,6 +106,20 @@ module.exports = function ( app ) {
 
       res.json( userComments );
 
+    } )
+  } )
+
+  app.get( "/viewusers/:name", function ( req, res ) {
+    console.log( "req.params.name is:", req.params.name );
+    db.User.findAll( {
+      where: {
+        name: {
+          [ Op.like ]: '%' + req.params.name + '%'
+        }
+      }
+    } ).then( function ( queriedUser ) {
+      console.log( "queried user is", queriedUser );
+      res.json( queriedUser );
     } )
   } )
 

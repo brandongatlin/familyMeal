@@ -10,7 +10,7 @@ function initMap( moredata ) {
   var mapOptions = {
     zoom: 10,
     scrollwheel: false,
-    center: new google.maps.LatLng( 31.44, -100.47 )
+    center: center
   }
   var map = new google.maps.Map( document.getElementById( 'map' ), mapOptions );
   var bounds = new google.maps.LatLngBounds();
@@ -33,7 +33,8 @@ function initMap( moredata ) {
             } );
             var contentString = `${name} ${address}`;
             var infowindow = new google.maps.InfoWindow( {
-              content: `${name}`
+              content: `<h6><a href=https://www.google.com/search?q=${name} target="_blank">${name}</a></h6>`
+
             } );
             google.maps.event.addListener( marker, 'click', function () {
               infowindow.open( map, marker );
@@ -43,86 +44,6 @@ function initMap( moredata ) {
       } )( name ) );
   }
 }
-
-// google.maps.event.addDomListener( window, 'load', initMap );
-// google.maps.event.addDomListener( window, 'resize', initMap );
-var addresses = [ "3000 Main St San Angelo TX", "4001 Sunset Dr San Angelo TX" ];
-var names = [ 'First Place', 'Second Place' ];
-
-
-// function initMap( moredata ) {
-//   console.log( "more data is:", moredata );
-
-// var geocoder = new google.maps.Geocoder();
-
-
-
-// for ( var i = 0; i < moredata.length; i++ ) {
-//
-//   console.log( "more data sub i is:", moredata[ i ] );
-//
-//   var food = `${moredata[i].food_type}`
-//   console.log( "food is:", moredata[ i ].food_type );
-//
-//   content = `${moredata[ i ].donated_by.address}`
-//   // var content = `${place} ${food}`
-//
-//
-//
-//   geocoder.geocode( { 'address': markers[ i ] }, function ( results, status ) {
-//
-//     console.log( "results from google are:", results );
-//
-//     var marker = new google.maps.Marker( {
-//       map: map,
-//       position: results[ 0 ].geometry.location,
-//       title: "test title"
-//     } );
-//
-//     var infowindow = new google.maps.InfoWindow( {
-//       content: markers[ i ]
-//     } );
-//
-//     marker.addListener( 'click', function () {
-//       infowindow.open( map, marker );
-//     } );
-//
-//   } );
-// } //end for loop
-
-//   var center = { lat: 29.760202, lng: -95.369835 };
-//   var houston = { lat: 29.760202, lng: -95.369835 };
-//
-//   var map = new google.maps.Map( document.getElementById( 'map' ), {
-//     zoom: 10,
-//     center: center
-//   } );
-//
-// } //end init map fx
-
-//testing
-// geocoder.geocode( {
-//   'address': addresses[ x ]
-//   // get function closure on "name"
-// }, ( function ( name ) {
-//   return function ( results, status ) {
-//     if ( status == google.maps.GeocoderStatus.OK ) {
-//       var marker = new google.maps.Marker( {
-//         map: map,
-//         position: results[ 0 ].geometry.location,
-//         animation: google.maps.Animation.DROP,
-//       } );
-//       var contentString = name;
-//       var infowindow = new google.maps.InfoWindow( {
-//         content: contentString
-//       } );
-//       google.maps.event.addListener( marker, 'click', function () {
-//         infowindow.open( map, marker );
-//       } );
-//     }
-//   }
-// } )( name ) );
-//end testing
 
 
 $( document ).ready( function () {
@@ -220,6 +141,18 @@ $( document ).ready( function () {
 
     $.post( "/members/newdonation", newDonation, function ( req, res ) {
 
+    } )
+  } )
+
+
+
+  $( "#submit-user-query" ).on( "click", function ( event ) {
+    event.preventDefault();
+    var name = $( "#queried-user-input" ).val().trim();
+    console.log( name );
+
+    $.get( "/viewusers/" + name, function ( data ) {
+      console.log( "queried user data is:", data );
     } )
   } )
 
