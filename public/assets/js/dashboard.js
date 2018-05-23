@@ -2,8 +2,7 @@ var markers;
 var content;
 
 function initMap( moredata ) {
-  console.log( "more data is:", moredata )
-  "more data is:", moredata;
+  // console.log( "more data is:", moredata )
 
   var center = { lat: 29.760202, lng: -95.369835 };
 
@@ -148,12 +147,33 @@ $( document ).ready( function () {
 
   $( "#submit-user-query" ).on( "click", function ( event ) {
     event.preventDefault();
+    $( "#user-results" ).empty();
     var name = $( "#queried-user-input" ).val().trim();
-    console.log( name );
 
     $.get( "/viewusers/" + name, function ( data ) {
-      console.log( "queried user data is:", data );
+      if ( data ) {
+        console.log( data );
+
+        for ( var i = 0; i < data.length; i++ ) {
+          var queriedName = `<div>${data[ i ].name}</div>`;
+          $( "#user-results" ).append( queriedName )
+
+        }
+
+
+
+      }
+
     } )
+    $( "#queried-user-input" ).val( '' );
+
+
+    // for (var i = 0; i < data.length; i++) {
+    //
+    // }
+    //
+    // var queriedUsersElement = `<div></div>`
+    // $("#new-comment").append(queriedName)
   } )
 
 
