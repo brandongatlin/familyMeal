@@ -123,6 +123,18 @@ module.exports = function ( app ) {
     } )
   } )
 
+  app.post( "/newcomment", function ( req, res ) {
+    console.log( "new comment req.body is", req.body );
+
+    db.Comment.create( {
+      text: req.body.text,
+      reader: req.body.id,
+      writerId: req.user.id
+    } ).then( function ( commentData ) {
+      console.log( "commentData" ), commentData;
+    } )
+  } )
+
 
   app.post( "/members/newdonation", isAuthenticated, function ( req, res ) {
     console.log( "backend new donation req.body is:", req.body );

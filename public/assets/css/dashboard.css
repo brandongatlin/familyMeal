@@ -18,3 +18,21 @@
 .toasts {
   color: #ee6e73;
 }
+
+.card {
+  border: 1px solid #ee6e73;
+
+}
+
+.card-title {
+  color: red !important;
+
+}
+
+.comment-input {
+      box-sizing:border-box;
+}
+
+.card-img {
+  height: 50% !important;
+}

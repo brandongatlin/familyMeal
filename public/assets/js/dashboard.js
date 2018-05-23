@@ -109,7 +109,7 @@ $( document ).ready( function () {
 
         for ( var i = 0; i < data.length; i++ ) {
           $( "#comments-list" ).prepend(
-            `<li>On ${data[i].createdAt}, ${data[i].writerName} said, "${data[i].text}"</li>`
+            `<li>On ${data[i].createdAt}, a user said, "${data[i].text}"</li>`
           )
         }
       }
@@ -155,25 +155,50 @@ $( document ).ready( function () {
         console.log( data );
 
         for ( var i = 0; i < data.length; i++ ) {
-          var queriedName = `<div>${data[ i ].name}</div>`;
+
+          var queriedName =
+            `<div class="row">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-image">
+                  <img class="card-img" src="https://www.accueilanvers.org/wp-content/uploads/2018/04/1iydnsu7s91d9zwrnmqh.png.resize.710x399.png">
+                  <span class="card-title">${data[i].name}</span>
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light submit-comment red" data-id=${data[i].id}><i class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                  <input placeholder="Add Comment" class="comment-input" type="text" class="validate">
+                </div>
+              </div>
+            </div>
+          </div>`
+
+
           $( "#user-results" ).append( queriedName )
 
         }
-
-
 
       }
 
     } )
     $( "#queried-user-input" ).val( '' );
 
+  } )
 
-    // for (var i = 0; i < data.length; i++) {
-    //
-    // }
-    //
-    // var queriedUsersElement = `<div></div>`
-    // $("#new-comment").append(queriedName)
+  $( document ).on( "click", ".submit-comment", function ( event ) {
+    var text = $( ".comment-input" ).val().trim();
+    var id = $( this ).attr( "data-id" );
+    console.log( "text is:", text );
+    console.log( "id is:", id );
+
+    var newComment = {
+      text: text,
+      id: id
+    }
+
+
+    $.post( "/newcomment", newComment, function ( req, res ) {
+
+    } )
   } )
 
 

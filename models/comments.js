@@ -6,10 +6,6 @@ module.exports = function ( sequelize, DataTypes ) {
       text: {
         allowNull: false,
         type: DataTypes.STRING(),
-        validate: {
-          min: [ 10 ],
-          msg: 'Comment must be at least 10 characters'
-        }
 
       },
 
@@ -21,11 +17,6 @@ module.exports = function ( sequelize, DataTypes ) {
       writerId: {
         allowNull: false,
         type: DataTypes.INTEGER(),
-      },
-
-      writerName: {
-        allowNull: false,
-        type: DataTypes.STRING(),
       }
 
     },
