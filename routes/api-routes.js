@@ -26,13 +26,13 @@ module.exports = function ( app ) {
       name: req.body.name,
       address: req.body.address,
       phone: req.body.phone,
-      member_type: req.body.member_type
+      member_type: req.body.member_type,
+      image: req.body.image
     } ).then( function () {
       res.redirect( 307, "/api/login" );
     } ).catch( function ( err ) {
       console.log( err );
       res.json( err );
-      // res.status(422).json(err.errors[0].message);
     } );
   } );
 

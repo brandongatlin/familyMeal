@@ -200,7 +200,7 @@ $( document ).ready( function () {
             <h2 class="header">${data[i].name}</h2>
               <div class="card horizontal">
                 <div class="card-image">
-                  <img src="https://www.accueilanvers.org/wp-content/uploads/2018/04/1iydnsu7s91d9zwrnmqh.png.resize.710x399.png">
+                  <img src=${data[i].image}>
                 </div>
               <div class="card-stacked">
                 <div class="card-content">
