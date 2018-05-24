@@ -55,7 +55,7 @@ module.exports = function ( app ) {
       if ( user[ 0 ].member_type === "donor" ) {
         res.render( "dashboard", nameObj )
       } else {
-        res.send( "this user is a shelter" )
+        res.render( "shelters", nameObj )
       }
 
     } )
