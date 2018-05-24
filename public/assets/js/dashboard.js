@@ -252,6 +252,8 @@ $( document ).ready( function () {
       id: id
     }
 
+    $( ".comment-input" ).val( '' );
+
 
     $.post( "/newcomment", newComment, function ( req, res ) {
 
