@@ -115,6 +115,9 @@ module.exports = function ( app ) {
       where: {
         name: {
           [ Op.like ]: '%' + req.params.name + '%'
+        },
+        id: {
+          [ Op.not ]: req.user.id
         }
       }
     } ).then( function ( queriedUser ) {
