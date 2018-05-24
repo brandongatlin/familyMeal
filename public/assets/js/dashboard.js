@@ -75,11 +75,6 @@ function initMap( moredata ) {
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.' );
     infoWindow.open( map );
-
-
-
-
-
   }
 
 
@@ -200,17 +195,35 @@ $( document ).ready( function () {
 
         for ( var i = 0; i < data.length; i++ ) {
 
+          // var queriedName =
+          //   `<div class="row">
+          //   <div class="col s12 m6">
+          //     <div class="card small">
+          //       <div class="card-image">
+          //         <img class="card-img" src="https://www.accueilanvers.org/wp-content/uploads/2018/04/1iydnsu7s91d9zwrnmqh.png.resize.710x399.png">
+          //         <span class="card-title">${data[i].name}</span>
+          //         <a class="btn-floating btn-large halfway-fab waves-effect waves-light submit-comment red" data-id=${data[i].id}><i class="material-icons">add</i></a>
+          //       </div>
+          //       <div class="card-content">
+          //         <input placeholder="Add Comment" class="comment-input" type="text" class="validate">
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>`
+
           var queriedName =
-            `<div class="row">
-            <div class="col s12 m6">
-              <div class="card">
+            `<div class="col s12 m6">
+            <h2 class="header">${data[i].name}</h2>
+              <div class="card horizontal">
                 <div class="card-image">
-                  <img class="card-img" src="https://www.accueilanvers.org/wp-content/uploads/2018/04/1iydnsu7s91d9zwrnmqh.png.resize.710x399.png">
-                  <span class="card-title">${data[i].name}</span>
-                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light submit-comment red" data-id=${data[i].id}><i class="material-icons">add</i></a>
+                  <img src="https://www.accueilanvers.org/wp-content/uploads/2018/04/1iydnsu7s91d9zwrnmqh.png.resize.710x399.png">
                 </div>
+              <div class="card-stacked">
                 <div class="card-content">
                   <input placeholder="Add Comment" class="comment-input" type="text" class="validate">
+                </div>
+                <div class="card-action">
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light submit-comment red" data-id=${data[i].id}><i class="material-icons">add</i></a>
                 </div>
               </div>
             </div>
