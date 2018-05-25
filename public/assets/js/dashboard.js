@@ -27,10 +27,20 @@ function initMap( moredata ) {
           if ( status == google.maps.GeocoderStatus.OK ) {
             bounds.extend( results[ 0 ].geometry.location );
             map.fitBounds( bounds );
+
+            var image = {
+              url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+              size: new google.maps.Size( 20, 32 ),
+              // The origin for this image is (0, 0).
+              origin: new google.maps.Point( 0, 0 ),
+              // The anchor for this image is the base of the flagpole at (0, 32).
+              anchor: new google.maps.Point( 0, 32 )
+            }
             var marker = new google.maps.Marker( {
               map: map,
               position: results[ 0 ].geometry.location,
               animation: google.maps.Animation.DROP,
+              icon: image
             } );
             var contentString = `${name} ${address}`;
             var infowindow = new google.maps.InfoWindow( {

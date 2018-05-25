@@ -23,7 +23,8 @@ app.use( bodyParser.json( {
   type: "application/vnd.api+json"
 } ) );
 app.use( express.static( "public" ) );
-// app.set( 'view engine', 'jade' );
+// app.use( '/static', express.static( path.join( __dirname, 'public' ) ) )
+
 // We need to use sessions to keep track of our user's login status
 app.use( session( {
   secret: "keyboard cat",
