@@ -157,13 +157,18 @@ $( document ).ready( function () {
         $( "#comments-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
+
+          var dates = moment( data[ i ].createdAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" )
           $( "#comments-list" ).prepend(
-            `<li>On ${data[i].createdAt}, a user said, "${data[i].text}"</li>`
+            `<li>On ${dates}, a user said, "${data[i].text}"</li>`
           )
         }
       }
     } )
   } )
+
+  //this is to format the createdAt datetimes out of js time
+  // var dates = moment( res[ i ].createdAt ).format( "dddd, MMMM Do YYYY, h:mm a" );
 
 
   $( "#submit-donation" ).on( "click", function ( event ) {
