@@ -111,7 +111,7 @@ $( document ).ready( function () {
 
     $.get( "/members/viewdonations", function ( data ) {
       if ( data ) {
-        console.log( data );
+        // console.log( data );
 
         // console.log( "address of first donation is", data[ 0 ].donated_by.address );
         $( "#donations-list" ).empty();
@@ -291,8 +291,8 @@ $( document ).ready( function () {
   $( document ).on( "click", ".submit-comment", function ( event ) {
     var text = $( ".comment-input" ).val().trim();
     var id = $( this ).attr( "data-id" );
-    console.log( "text is:", text );
-    console.log( "id is:", id );
+    // console.log( "text is:", text );
+    // console.log( "id is:", id );
 
     var newComment = {
       text: text,

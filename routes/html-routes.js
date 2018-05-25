@@ -81,7 +81,7 @@ module.exports = function ( app ) {
   } )
 
   app.put( "/claimdonation:id", function ( req, res ) {
-    console.log( "claim donation req.params are:", req.params );
+    // console.log( "claim donation req.params are:", req.params );
 
     db.Donation.update( {
       claimed_by: req.user.id
@@ -133,26 +133,26 @@ module.exports = function ( app ) {
         }
       }
     } ).then( function ( queriedUser ) {
-      console.log( "queried user is", queriedUser );
+      // console.log( "queried user is", queriedUser );
       res.json( queriedUser );
     } )
   } )
 
   app.post( "/newcomment", function ( req, res ) {
-    console.log( "new comment req.body is", req.body );
+    // console.log( "new comment req.body is", req.body );
 
     db.Comment.create( {
       text: req.body.text,
       reader: req.body.id,
       writerId: req.user.id
     } ).then( function ( commentData ) {
-      console.log( "commentData" ), commentData;
+      // console.log( "commentData" ), commentData;
     } )
   } )
 
 
   app.post( "/members/newdonation", isAuthenticated, function ( req, res ) {
-    console.log( "backend new donation req.body is:", req.body );
+    // console.log( "backend new donation req.body is:", req.body );
     db.Donation.create( {
       food_type: req.body.food_type,
       food_description: req.body.food_description,
