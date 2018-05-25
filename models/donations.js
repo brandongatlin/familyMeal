@@ -51,23 +51,7 @@ module.exports = function ( sequelize, DataTypes ) {
         }
       },
 
-      status_claimed: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN(),
-        defaultValue: false
-      },
 
-      status_picked_up: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN(),
-        defaultValue: false
-      },
-
-      status_delivered: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN(),
-        defaultValue: false
-      }
     },
 
     {

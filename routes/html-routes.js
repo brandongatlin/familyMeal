@@ -68,7 +68,7 @@ module.exports = function ( app ) {
     db.Donation.findAll( {
       include: [ { all: true } ],
       where: {
-        status_claimed: 0
+        claimed_by: null
       },
       order: [
               [ 'id', 'DESC' ]
@@ -77,6 +77,18 @@ module.exports = function ( app ) {
       // console.log( "all donations are :", allDonations );
       res.json( allDonations );
 
+    } )
+  } )
+
+  app.put( "/claimdonation:id", function ( req, res ) {
+    console.log( "claim donation req.params are:", req.params );
+
+    db.Donation.update( {
+      claimed_by: req.user.id
+    }, {
+      where: {
+        id: req.params.id
+      }
     } )
   } )
 

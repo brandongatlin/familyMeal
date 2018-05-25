@@ -111,20 +111,66 @@ $( document ).ready( function () {
 
     $.get( "/members/viewdonations", function ( data ) {
       if ( data ) {
+        console.log( data );
+
         // console.log( "address of first donation is", data[ 0 ].donated_by.address );
         $( "#donations-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
 
-          var dates = moment( data[ i ].createdAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" )
+
+          var id = data[ i ].id;
+          var dates = moment( data[ i ].createdAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" );
+          var addresses = data[ i ].donated_by.address;
+          var q = data[ i ].food_quantity;
+
           $( "#donations-list" ).prepend(
-            `<li>${dates}: ${data[i].food_type}, ${data[i].food_description}</li>`
+            `<div class="row">
+                <div class="col s2">
+                  ${dates}
+                </div>
+                <div class="col s3">
+                  ${data[i].food_type}, ${data[i].food_description}
+                </div>
+                <div class="col s1">
+                  ${q}
+                </div>
+                <div class="col s4">
+                  ${addresses}
+                </div>
+                <div class="col s2">
+                  <label>
+                    <input class="claim-checkbox" data-id = ${id} type="checkbox" />
+                    <span>Claim</span>
+                  </label>
+                </div>
+              </div>`
           )
-        }
+
+        } //end loop
 
       }
     } )
   } )
+
+  $( document ).on( "click", ".claim-checkbox", function () {
+    var id = $( this ).attr( "data-id" );
+    console.log( "button clicked and id is:", id );
+
+    $.ajax( {
+      url: '/claimdonation' + id,
+      type: 'PUT',
+      // data: "name=John&location=Boston",
+      success: function ( data ) {
+        alert( 'Load was performed.' );
+      }
+    } );
+
+
+
+  } );
+
+
 
   $( "#view-donation-map" ).on( "click", function ( event ) {
     event.preventDefault();
