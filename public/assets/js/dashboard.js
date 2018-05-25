@@ -115,8 +115,10 @@ $( document ).ready( function () {
         $( "#donations-list" ).empty();
 
         for ( var i = 0; i < data.length; i++ ) {
+
+          var dates = moment( data[ i ].createdAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" )
           $( "#donations-list" ).prepend(
-            `<li>${data[i].food_type}, ${data[i].food_description}</li>`
+            `<li>${dates}: ${data[i].food_type}, ${data[i].food_description}</li>`
           )
         }
 
