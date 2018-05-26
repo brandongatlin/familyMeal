@@ -88,12 +88,24 @@ module.exports = function ( app ) {
       }
     } )
   } )
+  app.get( "/myclaims", function ( req, res ) {
+    db.Donation.findAll( {
+      include: [ { all: true } ],
+      where: {
+        claimed_by: req.user.id
+      }
+    } ).then( function ( myclaims ) {
+      res.json( myclaims )
+      console.log( "mycliams are:", myclaims );
+    } )
+  } )
+
 
   app.get( "/members/viewmap", isAuthenticated, function ( req, res ) {
     db.Donation.findAll( {
       include: [ { all: true } ],
       where: {
-        status_claimed: 0
+        claimed_by: null
       },
       order: [
               [ 'id', 'DESC' ]

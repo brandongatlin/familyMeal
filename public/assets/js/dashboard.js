@@ -171,6 +171,31 @@ $( document ).ready( function () {
 
   } );
 
+  $( document ).on( "click", "#my-claims", function () {
+    console.log( "my-claims clicked" );
+
+    $.get( "/myclaims", function ( data ) {
+      console.log( data );
+      if ( data ) {
+        for ( var i = 0; i < data.length; i++ ) {
+
+          var posted = moment( data[ i ].createdAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" )
+          var claimed = moment( data[ i ].claimedAt ).format( "dddd, MMMM, Do, YYYY, h:mm a" )
+          var food = data[ i ].food_type;
+          var q = data[ i ].food_quantity;
+          var location = data[ i ].donated_by.address;
+
+          $( "#my-claims-list" ).append(
+            `<div class="row"><div class="col s2">${posted}</div><div class="col s2">${claimed}</div><div class="col s3">${food}</div><div class="col s1">${q}</div><div class="col s3">${location}</div><div class="col s1">Buttons</div></div>`
+          )
+        }
+      }
+
+    } )
+
+  } )
+
+
 
 
   $( "#view-donation-map" ).on( "click", function ( event ) {
