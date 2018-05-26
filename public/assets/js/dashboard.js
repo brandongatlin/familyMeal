@@ -166,7 +166,8 @@ $( document ).ready( function () {
       }
     } );
 
-
+    const commentToast = `You've claimed a donation!`
+    M.toast( { html: commentToast, classes: "toasts" } )
 
   } );
 

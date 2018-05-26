@@ -47,10 +47,6 @@ module.exports = function ( app ) {
       let nameObj = {
         user: user
       }
-      // console.log( "user is:", user );
-      // console.log( "member name is:", user[ 0 ].name );
-      //
-      // console.log( "member type is:", user[ 0 ].member_type );
 
       if ( user[ 0 ].member_type === "donor" ) {
         res.render( "dashboard", nameObj )
@@ -59,8 +55,6 @@ module.exports = function ( app ) {
       }
 
     } )
-
-    // res.sendFile( path.join( __dirname, "../views/dashboard.html" ) );
 
   } );
 
@@ -83,9 +77,7 @@ module.exports = function ( app ) {
   app.put( "/claimdonation:id", function ( req, res ) {
     // console.log( "claim donation req.params are:", req.params );
 
-    var unix = Math.round( +new Date() / 1000 );
     const now = new Date()
-    console.log( "now", now );
 
     db.Donation.update( {
       claimed_by: req.user.id,
