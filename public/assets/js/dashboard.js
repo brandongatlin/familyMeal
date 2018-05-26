@@ -184,9 +184,13 @@ $( document ).ready( function () {
           var food = data[ i ].food_type;
           var q = data[ i ].food_quantity;
           var location = data[ i ].donated_by.address;
+          var id = data[ i ].id
 
           $( "#my-claims-list" ).append(
-            `<div class="row"><div class="col s2">${posted}</div><div class="col s2">${claimed}</div><div class="col s3">${food}</div><div class="col s1">${q}</div><div class="col s3">${location}</div><div class="col s1">Buttons</div></div>`
+            `<div class="row"><div class="col s2">${posted}</div><div class="col s2">${claimed}</div><div class="col s3">${food}</div><div class="col s1">${q}</div><div class="col s3">${location}</div><div class="col s1"><label>
+              <input class="omw-checkbox" data-id = ${id} type="checkbox" />
+              <span>OMW!</span>
+            </label></div></div>`
           )
         }
       }
@@ -195,6 +199,24 @@ $( document ).ready( function () {
 
   } )
 
+
+  $( document ).on( "click", ".omw-checkbox", function () {
+    var id = $( this ).attr( "data-id" );
+    console.log( "button clicked and id is:", id );
+
+    $.ajax( {
+      url: '/orderOut' + id,
+      type: 'PUT',
+      // data: "name=John&location=Boston",
+      success: function ( data ) {
+        alert( 'Load was performed.' );
+      }
+    } );
+
+    const commentToast = `Get on the road!`
+    M.toast( { html: commentToast, classes: "toasts" } )
+
+  } );
 
 
 

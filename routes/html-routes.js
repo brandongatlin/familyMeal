@@ -88,6 +88,23 @@ module.exports = function ( app ) {
       }
     } )
   } )
+
+  app.put( "/orderOut:id", function ( req, res ) {
+    // console.log( "claim donation req.params are:", req.params );
+
+    const now = new Date()
+
+    db.Donation.update( {
+      driver_out: now,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    } )
+  } )
+
+
+
   app.get( "/myclaims", function ( req, res ) {
     db.Donation.findAll( {
       include: [ { all: true } ],
