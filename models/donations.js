@@ -6,25 +6,16 @@ module.exports = function ( sequelize, DataTypes ) {
       food_type: {
         allowNull: false,
         type: DataTypes.STRING( 50 ),
-        validate: {
-          len: [ 1, 50 ]
-        }
       },
 
       food_description: {
         allowNull: false,
         type: DataTypes.STRING( 50 ),
-        validate: {
-          len: [ 1, 50 ]
-        }
       },
 
       food_quantity: {
         allowNull: false,
         type: DataTypes.INTEGER(),
-        validate: {
-          len: [ 1, 5 ]
-        }
       },
 
       // posted_by: {
@@ -38,33 +29,41 @@ module.exports = function ( sequelize, DataTypes ) {
       claimed_by: {
         allowNull: true,
         type: DataTypes.STRING(),
-        validate: {
-          len: [ 1, 50 ]
-        }
       },
+      //user.id of shelter claiming the donation
 
-      delivered_by: {
+      claimedAt: {
+        allowNull: true,
+        type: DataTypes.DATE(),
+      },
+      //timestamp for claiming
+
+      deliveredAT: {
         allowNull: true,
         type: DataTypes.STRING(),
-        validate: {
-          len: [ 1, 50 ]
-        }
       },
+      //timestamp of delivery?//
 
-      status_claimed: {
+      driver_out: {
         allowNull: true,
-        type: DataTypes.BOOLEAN()
+        type: DataTypes.DATE(),
       },
+      //
 
-      status_picked_up: {
-        allowNull: true,
-        type: DataTypes.BOOLEAN()
-      },
+      // status_claimed: {
+      //   allowNull: true,
+      //   type: DataTypes.BOOLEAN()
+      // },
 
-      status_delivered: {
-        allowNull: true,
-        type: DataTypes.BOOLEAN()
-      },
+      // status_picked_up: {
+      //   allowNull: true,
+      //   type: DataTypes.BOOLEAN()
+      // },
+
+      // status_delivered: {
+      //   allowNull: true,
+      //   type: DataTypes.BOOLEAN()
+      // },
 
 
     },

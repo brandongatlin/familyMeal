@@ -83,8 +83,13 @@ module.exports = function ( app ) {
   app.put( "/claimdonation:id", function ( req, res ) {
     // console.log( "claim donation req.params are:", req.params );
 
+    var unix = Math.round( +new Date() / 1000 );
+    const now = new Date()
+    console.log( "now", now );
+
     db.Donation.update( {
-      claimed_by: req.user.id
+      claimed_by: req.user.id,
+      claimedAt: now,
     }, {
       where: {
         id: req.params.id
