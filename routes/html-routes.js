@@ -79,14 +79,40 @@ module.exports = function ( app ) {
 
     const now = new Date()
 
-    db.Donation.update( {
-      claimed_by: req.user.id,
-      claimedAt: now,
-    }, {
+    let id = req.params.id
+
+    db.Donation.findAll( {
       where: {
-        id: req.params.id
+        id: id
+      }
+    } ).then( function ( oneDonation ) {
+      console.log( "oneWholeDonation", oneDonation );
+      console.log( "oneDonation", oneDonation[ 0 ].dataValues.claimed_by );
+
+      if ( oneDonation[ 0 ].dataValues.claimed_by == null ) {
+        db.Donation.update( {
+          claimed_by: req.user.id,
+          claimedAt: now,
+        }, {
+          where: {
+            id: id
+          }
+        } )
+      } else {
+        db.Donation.update( {
+          claimed_by: null,
+          claimedAt: null,
+        }, {
+          where: {
+            id: id
+          }
+        } )
       }
     } )
+
+
+
+
   } )
 
   app.put( "/orderOut:id", function ( req, res ) {

@@ -160,10 +160,7 @@ $( document ).ready( function () {
     $.ajax( {
       url: '/claimdonation' + id,
       type: 'PUT',
-      // data: "name=John&location=Boston",
-      success: function ( data ) {
-        alert( 'Load was performed.' );
-      }
+      success: function ( data ) {}
     } );
 
     const commentToast = `You've claimed a donation!`
@@ -173,6 +170,7 @@ $( document ).ready( function () {
 
   $( document ).on( "click", "#my-claims", function () {
     console.log( "my-claims clicked" );
+    $( "#my-claims-list" ).empty();
 
     $.get( "/myclaims", function ( data ) {
       console.log( data );
