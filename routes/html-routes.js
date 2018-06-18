@@ -217,4 +217,12 @@ module.exports = function ( app ) {
     } )
   } )
 
+  // app.get("profile/update", function(req, res){
+  //
+  //   let hbsObj = {
+  //
+  //   }
+  //   res.render("update", hbsObj);
+  // })
+
 }

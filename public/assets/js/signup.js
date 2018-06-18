@@ -31,7 +31,7 @@ $( document ).ready( function () {
     var city = cityInput.val().trim();
     var state = stateInput.val().trim();
     var zip = zipInput.val().trim();
-    var image = $( "#image-input" ).val().trim();
+    // var file = $( "#image-input" ).val().trim();
 
     address = `${street_address} ${city} ${state} ${zip}`
 
@@ -49,7 +49,7 @@ $( document ).ready( function () {
       address: address,
       phone: phone,
       member_type: member_type,
-      image: image
+      // file: file
     };
 
     console.log( userData );
@@ -61,7 +61,7 @@ $( document ).ready( function () {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser( userData.email, userData.password, userData.name, userData.address, userData.phone, userData.member_type, userData.image );
+    signUpUser( userData.email, userData.password, userData.name, userData.address, userData.phone, userData.member_type );
     emailInput.val( "" );
     passwordInput.val( "" );
   } )
@@ -69,7 +69,7 @@ $( document ).ready( function () {
 
   // Does a post to the signup route. If succesful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser( email, password, name, address, phone, member_type, image ) {
+  function signUpUser( email, password, name, address, phone, member_type, file ) {
     $.post( "/api/signup", {
       email: email,
       password: password,
@@ -77,7 +77,7 @@ $( document ).ready( function () {
       address: address,
       phone: phone,
       member_type: member_type,
-      image: image
+      // file: file
     } ).then( function ( data ) {
       window.location.replace( data );
       // If there's an error, handle it by throwing up a boostrap alert

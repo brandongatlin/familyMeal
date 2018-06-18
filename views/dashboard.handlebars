@@ -27,14 +27,23 @@
   <!--Nav-->
   <nav id='nav'>
     <div class="nav-wrapper valign-wrapper">
-      <a href="/" class="brand-logo center">Logo</a>
+      <!-- <a href="/" class="brand-logo center">Logo</a> -->
+      {{#each user}}
+
+<!-- <input type="file" placeholder="Pic" name="image" id="image-input" class="form-control"> -->
+
+        <img src={{this.filePath}} height="100px" class="brand-logo center" type="file"></img>
+      {{/each}}
+
       <ul class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/comments">Comment</a></li>
       </ul>
+
       <div>
         <a href="/logout" class="waves-effect waves-light btn-large pulse logout" id="dashboard-logout">Logout</a>
       </div>
+
     </div>
   </nav>
   <!--end nav-->

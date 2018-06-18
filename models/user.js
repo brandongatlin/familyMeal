@@ -39,7 +39,7 @@ module.exports = function ( sequelize, DataTypes ) {
       allowNull: false
     },
 
-    image: {
+    filePath: {
       type: DataTypes.STRING,
       allowNull: true
     }

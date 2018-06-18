@@ -27,7 +27,7 @@ module.exports = function ( app ) {
       address: req.body.address,
       phone: req.body.phone,
       member_type: req.body.member_type,
-      image: req.body.image
+      filePath: "http://terrehautebridge.com/wp-content/uploads/2015/06/dummy-reversal-featured.jpg"
     } ).then( function () {
       res.redirect( 307, "/api/login" );
     } ).catch( function ( err ) {
